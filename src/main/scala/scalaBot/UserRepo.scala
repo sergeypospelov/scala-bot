@@ -1,7 +1,5 @@
 package scalaBot
 
-class User
-
 trait UserRepo {
   def addUser(t: User): Unit
 
