@@ -1,7 +1,5 @@
 package scalaBot
 
-class Event
-
 trait EventStorageRepo {
   def addEvent(t: Event): Unit
 
