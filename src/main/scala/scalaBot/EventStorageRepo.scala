@@ -2,7 +2,7 @@ package scalaBot
 
 class Event
 
-trait EventStorageRepo {g
+trait EventStorageRepo {
   def addEvent(t: Event): Unit
 
   def deleteEvent(t: Event): Unit
