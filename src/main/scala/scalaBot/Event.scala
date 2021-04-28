@@ -1,6 +1,4 @@
 package scalaBot
+import java.time.ZonedDateTime
 
-trait Event {
-  // working with memory
-  def send(message: String): Unit
-}
+case class Event(description: String, time: ZonedDateTime, source: Source = AnyEvent)
