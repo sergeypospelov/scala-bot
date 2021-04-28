@@ -1,6 +1,6 @@
 package scalaBot
 
-trait MemberEvent {
+trait UserEvent {
   /* creates task for handler */
   def send(data: String /*, listener */): Unit
 

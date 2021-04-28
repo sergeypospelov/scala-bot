@@ -16,5 +16,5 @@ lazy val root = project.in(file("."))
 
     semanticdbEnabled := true, // enable SemanticDB
     semanticdbVersion := scalafixSemanticdb.revision, // use Scalafix compatible version
-    scalacOptions += "-Ywarn-unused" // required by `RemoveUnused` rule
+    scalacOptions += "-Ywarn-unused:imports" // required by `RemoveUnused` rule
   )
