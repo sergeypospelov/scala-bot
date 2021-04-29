@@ -1,5 +1,0 @@
-package scalaBot
-
-class Calendar {
- ???
-}

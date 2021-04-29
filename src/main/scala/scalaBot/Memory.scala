@@ -1,6 +1,7 @@
 package scalaBot
 
-trait Memory extends Registration {
+/*
+trait Memory extends Registry {
   /* take information from the site. */
   def update(/*...*/): Unit
 
@@ -11,3 +12,4 @@ trait Memory extends Registration {
   // working with memory
   def changeData(/*...*/): Unit
 }
+*/

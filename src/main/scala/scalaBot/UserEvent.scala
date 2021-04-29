@@ -1,5 +1,6 @@
 package scalaBot
 
+/*
 trait UserEvent {
   /* creates task for handler */
   def send(data: String /*, listener */): Unit
@@ -11,3 +12,4 @@ trait UserEvent {
   /* processing user request */
   def getMessage(message: String): Unit
 }
+*/
