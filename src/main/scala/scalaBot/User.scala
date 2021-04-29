@@ -1,3 +1,3 @@
 package scalaBot
 
-case class User (id: Int, name: String, emknId: Int)
+case class User (id: ID, name: String, emknId: EmknID)
