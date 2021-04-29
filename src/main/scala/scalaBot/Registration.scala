@@ -1,6 +1,6 @@
 package scalaBot
 
-trait RegistrationEvent {
+trait Registration {
   // working with memory
   /* register someone, return success of operation */
   def registration(): Boolean

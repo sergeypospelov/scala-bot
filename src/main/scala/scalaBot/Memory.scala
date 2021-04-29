@@ -1,6 +1,6 @@
 package scalaBot
 
-trait MemoryEvent extends RegistrationEvent {
+trait Memory extends Registration {
   /* take information from the site. */
   def update(/*...*/): Unit
 

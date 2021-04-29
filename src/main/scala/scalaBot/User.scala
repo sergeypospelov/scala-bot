@@ -1,6 +1,3 @@
 package scalaBot
 
-class User {
-  val id: Int = ???
-  val name: String = ???
-}
+case class User (id: Int, name: String)
