@@ -1,14 +1,18 @@
 package scalaBot.repository
 
-import scalaBot.{EventID, ID}
+import cats.effect.IO
+import scalaBot.util.{EventID, UserID}
 
-class EventUsersRepository extends HashMapRepository[List[ID]] {
-  def addOne(id: EventID, userId: ID): Unit = table.updateWith(id) {
-    case Some(list) => Some(list :+ userId)
-    case None       => Some(List(userId))
+
+class EventUsersRepository extends HashMapRepository[IO, EventID, List[UserID]] {
+  def addOne(id: EventID, userID: UserID): IO[Unit] = IO.delay {
+    table.updateWith(id) {
+      case Some(list) => Some(list :+ userID)
+      case None => Some(List(userID))
+    }
   }
 
-  def deleteOne(id: EventID, userId: ID): Unit = table.updateWith(id) {
+  def deleteOne(id: EventID, userId: UserID): Unit = table.updateWith(id) {
     case Some(list) => Some(list.filterNot(_ == userId))
     case None       => None
   }

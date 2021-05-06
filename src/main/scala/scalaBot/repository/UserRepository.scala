@@ -1,5 +1,7 @@
 package scalaBot.repository
 
-import scalaBot.User
+import cats.effect.IO
+import scalaBot.user.User
+import scalaBot.util.UserID
 
-class UserRepository extends HashMapRepository[User]  {}
+class UserRepository extends HashMapRepository[IO, UserID, User]
