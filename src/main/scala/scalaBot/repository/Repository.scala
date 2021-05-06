@@ -1,16 +1,13 @@
 package scalaBot.repository
 
-import scalaBot.ID
-import scala.util.Try
+trait Repository[F[_], ID, T] {
+  def add(id: ID, t: T): F[Unit]
 
-trait Repository[T] {
-  def add(id: ID, t: T): Unit
+  def delete(id: ID): F[Unit]
 
-  def delete(id: ID): Unit
+  def findById(id: ID): F[Either[String, T]]
 
-  def findById(id: ID): Try[T]
+  def update(id: ID, t: T): F[Unit]
 
-  def update(id: ID, t: T): Unit
-
-  def getAll: List[T]
+  def getAll: F[List[T]]
 }
