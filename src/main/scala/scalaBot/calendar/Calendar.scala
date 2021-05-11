@@ -1,6 +1,6 @@
 package scalaBot.calendar
 
-import canoe.models.User
+import scalaBot.user.User
 import scalaBot.util.CalendarID
 
 class Calendar {
