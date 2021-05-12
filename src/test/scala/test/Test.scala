@@ -9,7 +9,7 @@ class Test extends AnyFunSuite with Matchers {
     assert(1 == 1)
   }
 
-  test("parse") {
-    ParserICS.parse()
-  }
+//  test("parse") {
+//    ParserICS.parse()
+//  }
 }
