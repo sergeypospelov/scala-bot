@@ -29,6 +29,8 @@ class Bot(implicit val backend: SttpBackend[IO, Any])
   onCommand("start") { implicit msg =>
     reply(s"Hello, ${msg.from.get.firstName}!", replyMarkup = Some(keyboard)).void
   }
+
+
 }
 
 object Bot {

@@ -9,19 +9,17 @@ import sttp.model.Uri
 
 object ParserEMKN {
   def getUriById(id : Int): Uri = {
-    val idStr = id.toString()
+    val idStr = id.toString
     uri"https://emkn.ru/users/$idStr/classes.ics"
   }
 
-  def parseByPath(id :Int = 446, targetFileName: String = "classes.ics") {
+  def parseByPath(id: Int, targetFileName: String = "classes.ics")(implicit backend: SttpBackend[IO, Any]): IO[Any] = {
     val targetFile = new File(targetFileName)
     val uri = getUriById(id)
     val request = basicRequest
       .get(uri)
       .response(asFile(targetFile))
 
-    val value  = AsyncHttpClientCatsBackend[IO]()
-      .flatMap(request.send(_))
-    value.unsafeRunSync()
+    request.send(backend)
   }
 }
