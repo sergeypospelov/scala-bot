@@ -39,10 +39,10 @@ public abstract class PrefixFilterInputStream extends InputStream {
             if ((cl = getClassDoWithLines(line)) != null) { // sure, !excludeLine(line) && input.readLine() != null
                 Vector<String> listRes = new Vector<>();
                 listRes.add(line);
-                input.mark(1);
+                input.mark(1_000_000);
                 while (cl.takeLine(line = input.readLine())) {
                     listRes.add(line);
-                    input.mark(1);
+                    input.mark(1_000_000);
                 }
                 input.reset();
                 line = cl.doWithLines(listRes);
@@ -69,9 +69,7 @@ public abstract class PrefixFilterInputStream extends InputStream {
 }
 
 abstract class DoWithLines {
-    boolean takeLine(String line) {
-        return line.startsWith(" ");
-    }
+    boolean takeLine(String line) { return line.startsWith(" "); }
 
     abstract String doWithLines(List<String> listRes);
 }
