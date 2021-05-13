@@ -1,17 +1,12 @@
 package scalaBot.parser
 
+import java.io.FileInputStream
+
 import net.fortuna.ical4j.data.CalendarBuilder
-import net.fortuna.ical4j.model.Property.{CREATED, DESCRIPTION}
 import net.fortuna.ical4j.model.component.VEvent
 import net.fortuna.ical4j.util.MapTimeZoneCache
-import scalaBot.calendar.CalendarItem
-import scalaBot.event._
-import scalaBot.calendar._
 
-import java.io.{BufferedOutputStream, FileInputStream, FileOutputStream}
-import java.time.ZonedDateTime
 import scala.collection.JavaConverters._
-import scala.collection.mutable
 
 object ParserICS {
   System.setProperty("net.fortuna.ical4j.timezone.cache.impl", classOf[MapTimeZoneCache].getName)
