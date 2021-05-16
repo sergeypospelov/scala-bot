@@ -1,12 +1,11 @@
 package scalaBot.parser
 
-import java.io.FileInputStream
-
+import java.io.{FileInputStream}
 import net.fortuna.ical4j.data.CalendarBuilder
 import net.fortuna.ical4j.model.component.VEvent
 import net.fortuna.ical4j.util.MapTimeZoneCache
-
 import scala.collection.JavaConverters._
+
 
 object ParserICS {
   System.setProperty("net.fortuna.ical4j.timezone.cache.impl", classOf[MapTimeZoneCache].getName)
@@ -25,60 +24,17 @@ object ParserICS {
     }
   }
 
-  def parse(path: String = "classes.ics") { // change in real version
-    import net.fortuna.ical4j.model.Property._
+  def parse(path: String): List[VEvent] = {
     val iStream = new FileInputStream(path)
       .fixing
-    //    val target = new BufferedOutputStream(new FileOutputStream("classes2.ics"))   //
-    //    try iStream.readAllBytes().foreach(target.write(_)) finally target.close      // left for convenience
+//    val target = new BufferedOutputStream(new FileOutputStream("classes2.ics"))   //
+//    try iStream.readAllBytes().foreach(target.write(_)) finally target.close      // left for convenience
     val calendar = new CalendarBuilder().build(iStream)
-    val events = calendar
+    calendar
       .getComponents
       .getAll
       .asScala
       .collect { case ev: VEvent => ev }
-    events.map(_.getProperties.get(DESCRIPTION))
+      .toList
   }
-
-//  def toCalendarItem(vEvents: mutable.Buffer[VEvent], fromTime: Int /* time */): List[CalendarItem] = {
-//    val list = List.empty
-//    vEvents
-////      .filter(_.getProperties.get("CREATED;VALUE=DATE-TIME")[0] > fromTime) // and other
-//      .foreach { vEvent =>
-//        val summary: String = vEvent.getProperties.get(SUMMARY).value
-//        val description: String = vEvent.getProperties.get(DESCRIPTION).value
-//        val time: ZonedDateTime = vEvent.getProperties.get(DTSTART;TZID=Europe/Moscow;VALUE=DATE-TIME).value
-//        val desk: String = summary + "\n" + description
-//        val listEvents: List[Event] = List.empty
-//
-//        if (summary.toLowerCase() contains "лекция") {
-//          listEvents.appended(AnyEvent(desk, /* now */))
-//          val cl = new ClassItem {
-//            override def description: String    = desk
-//            override def getEvents: List[Event] = listEvents
-//          }
-//          list.appended(cl)
-//        }
-//        else if (summary.toLowerCase() contains "семинар") {
-//          if (true) {
-//            listEvents.appended(NewHomeworkEvent(desk, /* now */))
-//          }
-//          else if (true) {
-//            listEvents.appended(UpdateHomeworkEvent(desk, /* now */))
-//          }
-//          else if (true) {
-//            listEvents.appended(DeadlineEvent(desk, time))
-//          }
-//          val cl = new AssignmentItem {
-//            override def description: String    = desk
-//            override def getEvents: List[Event] = listEvents
-//          }
-//          list.appended(cl)
-//        }
-//        else {
-//          ...
-//        }
-//    }
-//    list
-//  }
 }
