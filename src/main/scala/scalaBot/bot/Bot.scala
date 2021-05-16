@@ -34,5 +34,5 @@ class Bot(implicit val backend: SttpBackend[IO, Any])
 }
 
 object Bot {
-  private val TG_TOKEN = "1605857011:AAF4c93TBz3H2v5fzmkMSZsrWsI9NAQuT0k"
+  private val TG_TOKEN = "1605857011:AAF4c93TBz3H2v5fzmkMSZsrWsI9NAQuT0k" // TODO: Remove later
 }
