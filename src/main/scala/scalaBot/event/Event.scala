@@ -2,9 +2,12 @@ package scalaBot.event
 
 import java.time.ZonedDateTime
 
+import scalaBot.util.EventID
+
 sealed trait Event {
   def description: String
   def time: ZonedDateTime
+  def id: EventID = EventID(hashCode()) // TODO: not correct!
 }
 
 case class NewHomeworkEvent(description: String, time: ZonedDateTime)     extends Event

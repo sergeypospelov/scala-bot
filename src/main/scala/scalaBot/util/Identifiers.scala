@@ -1,9 +1,9 @@
 package scalaBot.util
 
-case class EmknID(id: Int) extends AnyVal
+case class EmknID(id: Long) extends AnyVal
 
-case class UserID(id: Int) extends AnyVal
+case class UserID(id: Long) extends AnyVal
 
-case class EventID(id: Int) extends AnyVal
+case class EventID(id: Long) extends AnyVal
 
-case class CalendarID(id: Int) extends AnyVal
+case class CalendarID(id: Long) extends AnyVal

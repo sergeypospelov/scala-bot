@@ -8,8 +8,7 @@ import scala.collection.JavaConverters._
 
 
 object ParserICS {
-  System.setProperty("net.fortuna.ical4j.timezone.cache.impl", classOf[MapTimeZoneCache].getName)
-  System.setProperty("ical4j.parsing.relaxed", "true")
+
 
   implicit class FISExt(is: FileInputStream) {
     def fixing: PrefixFilterInputStream = new PrefixFilterInputStream(is) {
